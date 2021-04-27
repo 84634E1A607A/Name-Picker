@@ -48,17 +48,19 @@ namespace Name_Picker
             string home = Environment.CurrentDirectory + "\\lists";
             foreach (string fname in Directory.GetFiles(home, "*.lst"))
             {
-                MenuItem i = new MenuItem() { Header = fname.Substring(home.Length + 1) };
+                MenuItem i = new MenuItem() { Header = fname.Substring(home.Length + 1, -4) };
                 i.Click += LoadNames;
                 Lists.Items.Add(i);
+                if (i.Header == "main") { i.Click(); }
             }
         }
 
         private void LoadNames(object sender, RoutedEventArgs e)
         {
             mainNameList.Clear();
-            mainNameList.AddRange(File.ReadAllLines( "lists\\" + ((MenuItem)sender).Header.ToString()));
+            mainNameList.AddRange(File.ReadAllLines( "lists\\" + ((MenuItem)sender).Header.ToString()) + ".lst");
             Names.Items.Clear();
+            Selected.Text = "";
             foreach (string n in mainNameList) Names.Items.Add(n);
         }
 
