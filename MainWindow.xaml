@@ -23,7 +23,7 @@
                 <Button x:Name="Sort" Height="25" Width="70" Margin="5" Click="Sort_Click">列表乱序</Button>
                 <Button x:Name="Reset" Height="25" Width="70" Margin="5" Click="Reset_Click">列表重置</Button>
             </WrapPanel>
-            <TextBlock x:Name="Selected" DockPanel.Dock="Top" Margin="10" FontSize="48" FontWeight="Bold" FontFamily="KaiTi" Background="#f8f8f8" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="Selected" DockPanel.Dock="Top" Margin="10" FontSize="40" FontWeight="Bold" FontFamily="KaiTi" Background="#f8f8f8" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </DockPanel>
     </DockPanel>
 </Window>
