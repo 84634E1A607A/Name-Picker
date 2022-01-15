@@ -5,25 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Name_Picker"
         mc:Ignorable="d"
-        Title="点名器" Height="250" Width="280" ResizeMode="NoResize" Loaded="Window_Loaded">
-    <DockPanel>
-        <Menu DockPanel.Dock="Top" IsMainMenu="True">
-            <MenuItem Header="文件">
-                <MenuItem x:Name="Open" Header="打开" Click="Open_Click"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="列表" x:Name="Lists">
-                
-            </MenuItem>
-        </Menu>
-        <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
-            <ListView DockPanel.Dock="Left" Width="80" x:Name="Names" HorizontalAlignment="Left" Margin="5" SelectionMode="Single" SelectionChanged="Names_SelectionChanged" MouseDoubleClick="Names_MouseDoubleClick"></ListView>
-            <WrapPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
-                <Button x:Name="Random" Height="25" Width="70" Margin="5" Click="Random_Click">放回抽样</Button>
-                <Button x:Name="Pick" Height="25" Width="70" Margin="5" Click="Pick_Click">不放回抽样</Button>
-                <Button x:Name="Sort" Height="25" Width="70" Margin="5" Click="Sort_Click">列表乱序</Button>
-                <Button x:Name="Reset" Height="25" Width="70" Margin="5" Click="Reset_Click">列表重置</Button>
-            </WrapPanel>
-            <TextBlock x:Name="Selected" DockPanel.Dock="Top" Margin="10" FontSize="40" FontWeight="Bold" FontFamily="KaiTi" Background="#f8f8f8" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        </DockPanel>
+        Title="点名器" Height="230" Width="280" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <DockPanel DockPanel.Dock="Bottom" LastChildFill="True">
+        <ListView DockPanel.Dock="Left" Width="80" x:Name="Names" HorizontalAlignment="Left" Margin="5" SelectionMode="Single" SelectionChanged="Names_SelectionChanged" MouseDoubleClick="Names_MouseDoubleClick"></ListView>
+        <WrapPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+            <Button x:Name="Random" Height="25" Width="70" Margin="5" Click="Random_Click">放回抽样</Button>
+            <Button x:Name="Pick" Height="25" Width="70" Margin="5" Click="Pick_Click">不放回抽样</Button>
+            <Button x:Name="Sort" Height="25" Width="70" Margin="5" Click="Sort_Click">列表乱序</Button>
+            <Button x:Name="Reset" Height="25" Width="70" Margin="5" Click="Reset_Click">列表重置</Button>
+        </WrapPanel>
+        <TextBlock x:Name="Selected" DockPanel.Dock="Top" Margin="10" FontSize="40" FontWeight="Bold" FontFamily="KaiTi" Background="#f8f8f8" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
     </DockPanel>
 </Window>

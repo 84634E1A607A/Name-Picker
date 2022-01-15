@@ -22,43 +22,32 @@ namespace Name_Picker
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly string[] IntegratedList = 
+            new string[] {
+                "付宝文", "何佳宸", "何来", "余秋霆", "刘奕斐", "刘旭", "卫昱萌", "危志欣", "吴泓毅", "周子瑄",
+                "姚睿哲", "孔舍予", "宋词", "张天烁", "张楚崧", "张涵", "张玥瑶", "张留鲲", "彭娜", "彭子俊",
+                "徐亦萌", "戴沐妍", "朱安雅", "李家乐", "李成蹊", "李欣然", "李沐城", "李泽粲", "李语轩", "杨华铭",
+                "殷明昊", "王欣杰", "王沫涵", "王碧宇", "盛立", "石清宇", "程思翔", "罗誉中", "肖欣宇", "苏智渊",
+                "范钰明", "葛镐铭", "董业恺", "许泽睿", "郭昕童", "阮婧涵", "韩宇新", "马晨曦", "魏明玮", "龙金哲"
+            };
+
+        private readonly Random ran = new Random();
+        private readonly List<string> mainNameList = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private readonly Random ran = new Random();
-        private readonly List<string> mainNameList = new List<string>();
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                LoadLists();
-            }
-            catch
-            {
-                mainNameList.Clear();
-                Names.Items.Clear();
-            }
+            LoadNames();
         }
 
-        private void LoadLists()
-        {
-            string home = Environment.CurrentDirectory + "\\lists";
-            foreach (string fname in Directory.GetFiles(home, "*.lst"))
-            {
-                MenuItem i = new MenuItem() { Header = fname.Substring(home.Length + 1, fname.Length - home.Length - 5) };
-                i.Click += LoadNames;
-                Lists.Items.Add(i);
-                if (i.Header.ToString() == "main") { LoadNames(i, null); }
-            }
-        }
-
-        private void LoadNames(object sender, RoutedEventArgs e)
+        private void LoadNames()
         {
             mainNameList.Clear();
-            mainNameList.AddRange(File.ReadAllLines("lists\\" + ((MenuItem)sender).Header.ToString() + ".lst"));
+            mainNameList.AddRange(IntegratedList);
             Names.Items.Clear();
             Selected.Text = "";
             foreach (string n in mainNameList) Names.Items.Add(n);
@@ -90,21 +79,6 @@ namespace Name_Picker
         {
             Names.Items.Clear();
             foreach (string n in mainNameList) Names.Items.Add(n);
-        }
-
-        private void Open_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
-            {
-                Filter = "Text File|*.txt||",
-                Multiselect = false
-            };
-            if (!(openFileDialog.ShowDialog() == true)) return;
-            var ls = File.ReadAllLines(openFileDialog.FileName);
-            mainNameList.Clear();
-            mainNameList.AddRange(ls);
-            Names.Items.Clear();
-            foreach (string s in mainNameList) Names.Items.Add(s);
         }
 
         private void Names_MouseDoubleClick(object sender, MouseButtonEventArgs e)
